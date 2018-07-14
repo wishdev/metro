@@ -3,6 +3,7 @@
 [section steps/unpack]
 
 source: [
+EGO=${METRO_EGO:-ego}
 [ ! -d $[path/chroot] ] && install -d $[path/chroot]
 [ -d $[path/chroot]/tmp ] || install -d $[path/chroot]/tmp --mode=1777 || exit 2
 src="$(ls $[path/mirror/source])"
@@ -103,8 +104,8 @@ EOF
 	fi
 
 		cat $[path/chroot]/etc/ego.conf
-		ROOT=$[path/chroot] /root/ego/ego sync --kits-only || exit 8
-		ROOT=$[path/chroot] /root/ego/ego sync --config-only || exit 9
+		ROOT=$[path/chroot] ${EGO} sync --kits-only || exit 8
+		ROOT=$[path/chroot] ${EGO} sync --config-only || exit 9
 ]
 
 env: [
