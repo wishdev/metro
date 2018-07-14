@@ -4,7 +4,7 @@
 
 source: [
 [ ! -d $[path/chroot] ] && install -d $[path/chroot]
-[ ! -d $[path/chroot]/tmp ] && install -d $[path/chroot]/tmp --mode=1777 || exit 2
+[ -d $[path/chroot]/tmp ] || install -d $[path/chroot]/tmp --mode=1777 || exit 2
 src="$(ls $[path/mirror/source])"
 comp="${src##*.}"
 
